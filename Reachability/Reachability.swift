@@ -17,6 +17,9 @@ import SystemConfiguration
         case reachableViaWiFi
         case reachableViaWWAN
     }
+
+
+
     class Reachability: NSObject {
         private var notifying: Bool = false
         private var networkReachability: SCNetworkReachability?
@@ -85,7 +88,7 @@ import SystemConfiguration
 
         func stopNotifier() {
             if let reachability = networkReachability, notifying == true {
-                SCNetworkReachabilityUnscheduleFromRunLoop(reachability, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode as! CFString)
+                SCNetworkReachabilityUnscheduleFromRunLoop(reachability, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue)
                 notifying = false
             }
         }
